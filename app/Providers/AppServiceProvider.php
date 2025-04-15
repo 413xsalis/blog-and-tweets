@@ -4,12 +4,17 @@ namespace App\Providers;
 
 
 use App\Exceptions\InvalidEntrySlugException;
+use App\Policies\EntryPolicy;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
 use App\Models\Entry;
 
 class AppServiceProvider extends ServiceProvider
 {
+    protected $policies = [
+        //'App\Models' => 'App\Policies\ModelPolicy',
+        Entry::class => EntryPolicy::class
+    ];
     /**
      * Register any application services.
      */
